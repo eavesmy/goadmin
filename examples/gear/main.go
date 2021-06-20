@@ -5,11 +5,11 @@ import (
 	"os"
 	"os/signal"
 
-<<<<<<< HEAD
 	_ "github.com/GoAdminGroup/go-admin/adapter/gear"
 	_ "github.com/GoAdminGroup/go-admin/modules/db/drivers/postgres"
 	_ "github.com/GoAdminGroup/themes/sword"
 	"github.com/eavesmy/gear"
+	"github.com/eavesmy/gear/middleware/static"
 
 	"github.com/GoAdminGroup/go-admin/engine"
 	"github.com/GoAdminGroup/go-admin/examples/datamodel"
@@ -19,22 +19,6 @@ import (
 	"github.com/GoAdminGroup/go-admin/template"
 	"github.com/GoAdminGroup/go-admin/template/chartjs"
 	"github.com/GoAdminGroup/themes/adminlte"
-=======
-	_ "github.com/GoAdminGroup/themes/sword"
-	_ "github.com/eavesmy/goadmin/adapter/gear"
-	_ "github.com/eavesmy/goadmin/modules/db/drivers/postgres"
-
-	"github.com/GoAdminGroup/themes/adminlte"
-	"github.com/eavesmy/gear"
-	"github.com/eavesmy/gear/middleware/static"
-	"github.com/eavesmy/goadmin/engine"
-	"github.com/eavesmy/goadmin/examples/datamodel"
-	"github.com/eavesmy/goadmin/modules/config"
-	"github.com/eavesmy/goadmin/modules/language"
-	"github.com/eavesmy/goadmin/plugins/example"
-	"github.com/eavesmy/goadmin/template"
-	"github.com/eavesmy/goadmin/template/chartjs"
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 )
 
 func main() {
@@ -52,32 +36,17 @@ func main() {
 				User:       "postgres",
 				Pwd:        "23216340pgsqlDL",
 				Name:       "godmin",
-<<<<<<< HEAD
 				MaxIdleCon: 50,
 				MaxOpenCon: 150,
 				Driver:     config.DriverPostgresql,
 				//File:   "../datamodel/admin.db",
 			},
 		},
-		UrlPrefix: "/",
-=======
-				MaxIdleCon: 5,
-				MaxOpenCon: 10,
-				Driver:     config.DriverPostgresql,
-
-				//Driver: config.DriverSqlite,
-				//File:   "../datamodel/admin.db",
-			},
-		},
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 		Store: config.Store{
 			Path:   "./uploads",
 			Prefix: "uploads",
 		},
-<<<<<<< HEAD
-=======
 		UrlPrefix:          "admin",
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 		Language:           language.CN,
 		IndexUrl:           "/",
 		Debug:              true,
@@ -108,11 +77,8 @@ func main() {
 	//
 	// e.AddConfigFromJSON("../datamodel/config.json")
 
-<<<<<<< HEAD
-=======
 	app.Use(static.New(static.Options{Root: "./uploads", Prefix: "uploads"}))
 
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 	if err := e.AddConfig(&cfg).
 		AddGenerators(datamodel.Generators).
 		// add generator, first parameter is the url prefix of table when visit.
@@ -132,20 +98,13 @@ func main() {
 	e.HTML("GET", "/admin", datamodel.GetContent)
 
 	go func() {
-<<<<<<< HEAD
 		_ = app.Start(":20000")
-=======
 		app.Start(":8099")
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 	}()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
 	log.Print("closing database connection")
-<<<<<<< HEAD
 	e.PostgresqlConnection().Close()
-=======
-	e.MysqlConnection().Close()
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 }
