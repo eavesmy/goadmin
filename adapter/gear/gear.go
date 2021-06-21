@@ -14,7 +14,6 @@ import (
 	"net/url"
 	"strings"
 
-<<<<<<< HEAD
 	"github.com/GoAdminGroup/go-admin/adapter"
 	"github.com/GoAdminGroup/go-admin/context"
 	"github.com/GoAdminGroup/go-admin/engine"
@@ -26,21 +25,7 @@ import (
 	"github.com/eavesmy/gear"
 )
 
-// Gear structure value is a Gear GoAdmin adapter.
-=======
-	"github.com/eavesmy/goadmin/adapter"
-	"github.com/eavesmy/goadmin/context"
-	"github.com/eavesmy/goadmin/engine"
-	"github.com/eavesmy/goadmin/modules/config"
-	"github.com/eavesmy/goadmin/plugins"
-	"github.com/eavesmy/goadmin/plugins/admin/models"
-	"github.com/eavesmy/goadmin/plugins/admin/modules/constant"
-	"github.com/eavesmy/goadmin/template/types"
-	"github.com/eavesmy/gear"
-)
-
 // Gear structure value is a Gin GoAdmin adapter.
->>>>>>> 2fe0a5673b0868e2c22ef57fcc1e5c8a07ee24e7
 type Gear struct {
 	adapter.BaseAdapter
 	ctx    *gear.Context
